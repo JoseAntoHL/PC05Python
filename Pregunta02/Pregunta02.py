@@ -19,7 +19,7 @@ df['has_twitter_handle'] = df['taster_twitter_handle'].apply(lambda x: 'Yes' if 
 
 #Genere 4 reportes por agrupamiento de datos. Deberá elegir que reportes realizar
 
-reporte_puntaje_por_pais = df.groupby('country')['value'].mean().reset_index().sort_values(by='value', ascending=False)
+reporte_vinos_por_provincia = df.groupby('province').size().reset_index(name='num_wines').sort_values(by='num_wines', ascending=False)
 
 reporte_vinos_por_provincia = df.groupby('province').size().reset_index(name='num_wines').sort_values(by='num_wines', ascending=False)
 
@@ -31,6 +31,6 @@ reporte_precio_variedad_uva = df.groupby('diversity').agg({'price': ['max', 'min
 
 #Al menos uno de estos datos agrupados deberán ser almacenados en excel o csv
 
-reporte_puntaje_por_pais.to_excel('reporte_puntaje_por_pais.xlsx', index=False)
+reporte_precio_por_pais.to_excel('reporte_precio_por_pais.xlsx', index=False)
 
-print(reporte_puntaje_por_pais.head())
+print(reporte_precio_por_pais.head())
